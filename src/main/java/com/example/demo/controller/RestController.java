@@ -2,16 +2,21 @@ package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.model.User;
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/hello")
 /*
  * @RestController:to create the rest controller class.
  * @RequestMapping:describe the URL.
  * @RequestParam:to pass the value as parameter.
+ * @GetMapping:to get the name as a parameter.
+ * @PostMpping:to post the first name and last name as parameter
  */
 
 public class RestController 
@@ -34,5 +39,10 @@ public class RestController
 	    @GetMapping("/param/{name}")
 	    public String sayHelloPara(@PathVariable String name) {
 	        return "Hello " + name + " From Bridgelabz";
+	    }
+	    
+	    @PostMapping("/post")
+	    public String sayHello(@RequestBody User user) {
+	        return "Hello " + user.getFirstName() + " " + user.getLastName() + " From Bridgelabz";
 	    }
 }
