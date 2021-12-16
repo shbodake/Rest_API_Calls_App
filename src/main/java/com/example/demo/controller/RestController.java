@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @RequestParam:to pass the value as parameter.
  */
 
-public class RestController {
+public class RestController 
+{
 	 @RequestMapping(value = {"", "/", "home"})
 	    public String sayHello() {
 	        return "Hello From Bridgelabz..";
@@ -22,5 +23,4 @@ public class RestController {
 	    public String sayHello(@RequestParam(value= "name")String name){
 	        return "Hello "+ name +" From Bridgelabz";
 	    }
-
 }
