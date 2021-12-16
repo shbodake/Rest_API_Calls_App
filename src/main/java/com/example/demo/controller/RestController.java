@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.example.demo.model.User;
  * @RequestParam:to pass the value as parameter.
  * @GetMapping:to get the name as a parameter.
  * @PostMpping:to post the first name and last name as parameter
+ * @PutMapping:call put method and pass firstname as path variable
  */
 
 public class RestController 
@@ -44,5 +46,11 @@ public class RestController
 	    @PostMapping("/post")
 	    public String sayHello(@RequestBody User user) {
 	        return "Hello " + user.getFirstName() + " " + user.getLastName() + " From Bridgelabz";
+	    }
+	    
+	    @PutMapping("/put/{firstName}")
+	    public String sayHello(@PathVariable String firstName,
+	                           @RequestParam(value = "lastName") String lastName) {
+	        return "Hello " + firstName + " " + lastName + " From bridgeLabz";
 	    }
 }
